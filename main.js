@@ -11,7 +11,7 @@ let videos;
 videoData().then((data) => {
     videos = data.split('\n')
     for(let i = 0; i<videos.length - 1; i++) {
-        videos[i] = videos[i].substring(0, videos[i].length-1)
+        videos[i] = videos[i].substring(0, videos[i].length)
         let listedVid = document.createElement("li")
         let videoLink = document.createElement("a")
         videoLink.innerHTML = videos[i]
@@ -20,7 +20,6 @@ videoData().then((data) => {
         listedVid.appendChild(videoLink)
         videoList.appendChild(listedVid)
     }
-    console.log(videos[0].split(".be/")[1])
 })
 function createPlayList() {
     let videoIDS = [];
