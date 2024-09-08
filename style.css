@@ -1,0 +1,52 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.container {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+
+h1, p {
+    color: #a945b9;
+    text-align: center;
+}
+
+#masterDiv {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+}
+
+body {
+    background-color: #282828;
+}
+
+a {
+    color: #EBD3F8;
+    text-decoration: none;
+}
+
+#upload {
+    font-size: x-large;
+    color: #AD49E1;
+    text-decoration: underline;
+}
+
+#upload:hover {
+    color: #8225b4;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+li {
+    margin-top: 1%;
+}
+
+button {
+    margin-top: 15%;
+}
