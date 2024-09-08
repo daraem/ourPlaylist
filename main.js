@@ -1,12 +1,13 @@
 const videoList = document.getElementById("videoList")
 
 async function videoData(params) {
-    let data = await fetch("src/history.txt")
+    let data = await fetch("https://6cddaf1f-7572-45db-8ded-caa1974795b1-00-35hat27lj11p0.janeway.replit.dev/history.txt")
     let response = await data.text()
     return response
 }
 
 let videos;
+
 
 videoData().then((data) => {
     videos = data.split('\n')
@@ -34,6 +35,7 @@ function createPlayList() {
     }
     for(let i = 0; i<videos.length-1; i++) {
         let k = Math.floor(Math.random() * videoIDS.length)
+        console.log(k)
         mainURL += `${videoIDS[k]},`
         videoIDS.splice(k, 1)
     }
@@ -43,4 +45,5 @@ function createPlayList() {
     urlTag.setAttribute("target", "_blank")
     document.body.appendChild(urlTag)
     document.getElementById("mainurl").click()
+    document.getElementById("mainurl").remove()
 }
