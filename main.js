@@ -20,8 +20,8 @@ videoData().then((data) => {
         listedVid.appendChild(videoLink)
         videoList.appendChild(listedVid)
     }
-    console.log(videos[0].split(".be/")[1])
 })
+
 function createPlayList() {
     let videoIDS = [];
     let mainURL = "https://www.youtube.com/watch_videos?video_ids="
@@ -32,8 +32,10 @@ function createPlayList() {
             videoIDS.push(videos[i].split(".be/")[1].split("?")[0])
         }
     }
-    for(let i = 0; i<videoIDS.length; i++) {
-        mainURL += `${videoIDS[i]},`
+    for(let i = 0; i<videos.length-1; i++) {
+        let k = Math.floor(Math.random() * videoIDS.length)
+        mainURL += `${videoIDS[k]},`
+        videoIDS.splice(k, 1)
     }
     let urlTag = document.createElement("a")
     urlTag.setAttribute("href", mainURL)
