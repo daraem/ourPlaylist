@@ -1,26 +1,36 @@
 const videoList = document.getElementById("videoList")
 
 async function videoData(params) {
-    let data = await fetch("https://6cddaf1f-7572-45db-8ded-caa1974795b1-00-35hat27lj11p0.janeway.replit.dev/history.txt")
-    let response = await data.text()
-    return response
+    try {
+        let data = await fetch("https://6cddaf1f-7572-45db-8ded-caa1974795b1-00-35hat27lj11p0.janeway.replit.dev/history.txt")
+        let response = await data.text()
+
+        localStorage.setItem("videoID", response)
+
+        return response
+    } catch (error) {
+        if(localStorage.getItem("videoID")) {
+            return localStorage.getItem("videoID")
+        }
+    }
+
 }
 
 let videos;
 
 
 videoData().then((data) => {
-    videos = data.split('\n')
-    for(let i = 0; i<videos.length - 1; i++) {
-        videos[i] = videos[i].substring(0, videos[i].length)
-        let listedVid = document.createElement("li")
-        let videoLink = document.createElement("a")
-        videoLink.innerHTML = videos[i]
-        videoLink.setAttribute("href", videos[i])
-        videoLink.setAttribute("target", "_blank")
-        listedVid.appendChild(videoLink)
-        videoList.appendChild(listedVid)
-    }
+        videos = data.split('\n')
+        for(let i = 0; i<videos.length - 1; i++) {
+            videos[i] = videos[i].substring(0, videos[i].length)
+            let listedVid = document.createElement("li")
+            let videoLink = document.createElement("a")
+            videoLink.innerHTML = videos[i]
+            videoLink.setAttribute("href", videos[i])
+            videoLink.setAttribute("target", "_blank")
+            listedVid.appendChild(videoLink)
+            videoList.appendChild(listedVid)
+        }
 })
 
 function createPlayList() {
